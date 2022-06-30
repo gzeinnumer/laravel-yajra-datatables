@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function getStudents(Request $request)
     {
         if ($request->ajax()) {
-            $data = Student::limit(10)->get();
+            $data = Student::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
